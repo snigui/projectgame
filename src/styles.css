@@ -71,3 +71,12 @@ button{
   top: 65%;
   left: 40%;
 }
+
+h2{
+  font-family: sans-serif;
+  color: white;
+  position: relative;
+  top: 10%;
+  left: 1%;
+  font-size: 11px;
+}
