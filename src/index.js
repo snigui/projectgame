@@ -56,9 +56,15 @@ function setName() {
   getName()
 }
 
-function getName(){
+function getName() {
   var decodedCookie = decodeURIComponent(document.cookie);
   return decodedCookie
+}
+
+function displayName() {
+  var name = document.getElementById("PlayerNamesDisplay");
+  name.innerHTML = getName();
+
 }
 
 function loadGrid() {

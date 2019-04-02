@@ -100,3 +100,12 @@ h2{
   font-size: 25px;
 }
 
+#PlayerNamesDisplay {
+  background-color: lightgrey;
+  width: 300px;
+  border: 25px solid green;
+  padding: 25px;
+  margin: 25px;
+  font-family: 'Montserrat', sans-serif;
+  font-color: black;
+}
