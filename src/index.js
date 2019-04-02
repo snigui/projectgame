@@ -2,7 +2,7 @@
 
 var log = [];
 
-var grid = clickableGrid(15, 20, function(el, row, col, i, isDoubleClick) {
+var grid = clickableGrid(12, 12, function(el, row, col, i, isDoubleClick) {
   if (!isDoubleClick && !el.className) {
     el.className = "clicked1";
     log.push([i, 0]);

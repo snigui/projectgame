@@ -33,6 +33,8 @@
   color: #ff0f25;
   line-height: 100px;
   background: #ff4455;
+  opacity: 0.8;
+  filter: alpha(opacity=80);
 }
 .grid td.niclicked {
   width: 2px;
@@ -41,6 +43,8 @@
   color: #fff;
   line-height: 100px;
   background: #86e5ab;
+  opacity: 0.8;
+  filter: alpha(opacity=80);
 
 }
 
