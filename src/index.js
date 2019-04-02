@@ -52,7 +52,7 @@ function clickableGrid(rows, cols, callback) {
 
 function setName() {
   document.cookie = document.getElementById("name").value;
-  window.location.replace("http://localhost:63342/circlesquare1/circlesquareyes%20(2)/index.html?_ijt=pn6ec491kdiejgfuiejg3ktqkg");
+  window.location.replace("http://localhost:63342/thethegame/src/index.html?_ijt=30ik8hbokr52p901ia1517fs59");
   getName()
 }
 
