@@ -103,9 +103,11 @@ h2{
 #PlayerNamesDisplay {
   background-color: lightgrey;
   width: 300px;
-  border: 25px solid green;
+  border: 10px gray;
   padding: 25px;
   margin: 25px;
   font-family: 'Montserrat', sans-serif;
-  font-color: black;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  font-color: white;
 }
