@@ -1,16 +1,19 @@
 // import "./styles.css";
 
 var log = [];
+var points = [];
 //console.log(log[0][0]);
+console.log(points);
 
 
 var grid = clickableGrid(12, 12, function(el, row, col, i, isDoubleClick) {
   if (!isDoubleClick && !el.className) {
     el.className = "clicked1";
-    log.push([i, 0]);
+    log.push(i);
   }
   if (checkLine(log)){
-    changeClassName()
+    changeClassName();
+    points.push("1");
   }
 
   if (isDoubleClick && !el.className) {
@@ -65,6 +68,7 @@ function clickableGrid(rows, cols, callback) {
 
 function checkLine(log){
   var counter = 0;
+  var point= 0;
   if (log.length >= 5){
     for (var i = 0; i <log.length; i++){
       //console.log(log[i][0] + " first value");
@@ -72,7 +76,7 @@ function checkLine(log){
         while (counter < 5) {
           counter++;
           //console.log(log[j][0] + "value second ");
-          if (Math.abs(log[i][0] - log[j][0]) === 12 || Math.abs(log[i][0] - log[j][0]) === 1) {
+          if (Math.abs(log[i]- log[j] === 12 || Math.abs(log[i] - log[j]) === 1)) {
             log.splice(i);
             log.splice(j);
             /*d = document.getElementsByClassName('clicked1');
@@ -101,8 +105,7 @@ function getName() {
 
 function displayName() {
   var name = document.getElementById("PlayerNamesDisplay");
-  name.innerHTML = getName();
-
+  name.innerHTML = getName() + " " + ":" + " " + points[0];
 }
 
 function loadGrid() {
