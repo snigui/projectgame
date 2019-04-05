@@ -13,7 +13,6 @@ var grid = clickableGrid(12, 12, function(el, row, col, i, isDoubleClick) {
   }
   if (checkLine(log)){
     changeClassName();
-    points.push("1");
   }
 
   if (isDoubleClick && !el.className) {
@@ -76,7 +75,7 @@ function checkLine(log){
         while (counter < 5) {
           counter++;
           //console.log(log[j][0] + "value second ");
-          if (Math.abs(log[i]- log[j] === 12 || Math.abs(log[i] - log[j]) === 1)) {
+          if (Math.abs(log[i]- log[j]) === 12 || Math.abs(log[i] - log[j]) === 1) {
             log.splice(i);
             log.splice(j);
             /*d = document.getElementsByClassName('clicked1');
@@ -85,7 +84,7 @@ function checkLine(log){
 
           }
         }
-        }
+      }
         }
       }
   }
@@ -105,7 +104,7 @@ function getName() {
 
 function displayName() {
   var name = document.getElementById("PlayerNamesDisplay");
-  name.innerHTML = getName() + " " + ":" + " " + points[0];
+  name.innerHTML = getName()/* + " " + ":" + " " + points[0]*/;
 }
 
 function loadGrid() {
