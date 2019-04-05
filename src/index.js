@@ -1,18 +1,31 @@
 // import "./styles.css";
 
 var log = [];
+//console.log(log[0][0]);
+
 
 var grid = clickableGrid(12, 12, function(el, row, col, i, isDoubleClick) {
   if (!isDoubleClick && !el.className) {
     el.className = "clicked1";
     log.push([i, 0]);
   }
+  if (checkLine(log)){
+    changeClassName()
+  }
+
   if (isDoubleClick && !el.className) {
     el.className = "niclicked";
     log.push([i, 1]);
   }
   console.log(log);
 });
+
+function changeClassName(){
+  var name = document.getElementsByClassName("clicked1");
+  for(var i = (name.length - 1); i >= 0; i--) {
+    name[i].classList.remove("clicked1");
+  }
+}
 
 function clickableGrid(rows, cols, callback) {
   var i = 0;
@@ -49,6 +62,31 @@ function clickableGrid(rows, cols, callback) {
   return grid;
 }
 
+
+function checkLine(log){
+  var counter = 0;
+  if (log.length >= 5){
+    for (var i = 0; i <log.length; i++){
+      //console.log(log[i][0] + " first value");
+      for (var j = i+1; j < log.length; j++){
+        while (counter < 5) {
+          counter++;
+          //console.log(log[j][0] + "value second ");
+          if (Math.abs(log[i][0] - log[j][0]) === 12 || Math.abs(log[i][0] - log[j][0]) === 1) {
+            log.splice(i);
+            log.splice(j);
+            /*d = document.getElementsByClassName('clicked1');
+            d.className = "empty";*/
+            return true
+
+          }
+        }
+        }
+        }
+      }
+  }
+
+  checkLine(log);
 
 function setName() {
   document.cookie = document.getElementById("name").value;

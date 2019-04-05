@@ -18,6 +18,16 @@
   font-size: 13px;
 }
 
+.grid td.empty {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 13px;
+}
+
 .grid td.clicked {
   width: 2px;
   height: 2px;
@@ -35,6 +45,10 @@
   background: #ff4455;
   opacity: 0.8;
   filter: alpha(opacity=80);
+}
+.grid td.clickedEmpty {
+  line-height: 100px;
+
 }
 .grid td.niclicked {
   width: 2px;
