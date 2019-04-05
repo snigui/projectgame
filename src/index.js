@@ -126,8 +126,6 @@ function countdown(minutes) {
     } else {
 
       if(mins > 1){
-
-        // countdown(mins-1);   never reach “00″ issue solved:Contributed by Victor Streithorst
         setTimeout(function () { countdown(mins - 1); }, 1000);
 
       }
