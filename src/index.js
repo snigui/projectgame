@@ -1,6 +1,7 @@
 
 var log = [];
 var points = [];
+var point = 0;
 //console.log(log[0][0]);
 console.log(points);
 
@@ -12,6 +13,8 @@ var grid = clickableGrid(12, 12, function(el, row, col, i, isDoubleClick) {
   }
   if (checkLine(log)){
     changeClassName();
+    point++;
+    alert("Points scored:" + " " + point);
   }
 
   if (isDoubleClick && !el.className) {
