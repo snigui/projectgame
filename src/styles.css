@@ -1,0 +1,137 @@
+.grid {
+
+  border-collapse: collapse;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+
+.grid td {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 13px;
+}
+
+.grid td.empty {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 13px;
+}
+
+.grid td.clicked {
+  width: 2px;
+  height: 2px;
+  border-radius: 200px;
+  color: #fff;
+  line-height: 100px;
+  background: #ffff95;
+}
+.grid td.clicked1 {
+  width: 2px;
+  height: 2px;
+  border-radius: 200px;
+  color: #ff0f25;
+  line-height: 100px;
+  background: #ff4455;
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.grid td.clickedEmpty {
+  line-height: 100px;
+
+}
+.grid td.niclicked {
+  width: 2px;
+  height: 2px;
+  border-radius: 0px;
+  color: #fff;
+  line-height: 100px;
+  background: #86e5ab;
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+
+}
+
+html {
+  height: 100%;
+  background: url("https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Forig04.deviantart.net%2F97d6%2Ff%2F2014%2F257%2Fb%2F5%2Fanimated_pixel_stars___box_background_by_driftwoodbones-d7z0h0p.gif&f=1");
+  overflow: hidden;
+}
+
+
+
+h1{
+  font-size: 100px;
+  font-family: sans-serif;
+  color: white;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+p{
+  text-align: center;
+  font-family: sans-serif;
+  color: white;
+  position: fixed;
+  top: 60%;
+  left: 40%;
+}
+
+button{
+  text-align: center;
+  position: fixed;
+  top: 65%;
+  left: 40%;
+}
+
+h2{
+  font-family: sans-serif;
+  color: white;
+  position: relative;
+  top: 10%;
+  left: 1%;
+  font-size: 11px;
+}
+
+
+#list{
+  font-family: sans-serif;
+  color: white;
+  position: relative;
+  top: 10%;
+  left: 40%;
+  font-size: 16px;
+}
+
+#timer{
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  position: relative;
+  top: 50px;
+  text-align: center;
+  font-size: 25px;
+}
+
+#PlayerNamesDisplay {
+  background-color: lightgrey;
+  width: 300px;
+  border: 10px gray;
+  padding: 25px;
+  margin: 25px;
+  font-family: 'Montserrat', sans-serif;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  font-color: white;
+}
