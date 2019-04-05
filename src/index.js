@@ -1,4 +1,3 @@
-// import "./styles.css";
 
 var log = [];
 var points = [];
@@ -45,7 +44,7 @@ function clickableGrid(rows, cols, callback) {
               // block to see if double click
               setTimeout(() => {
                 callback(el, r, c, i);
-              }, 400);
+            }, 400);
             };
           })(cell, r, c, i),
           false
@@ -85,11 +84,11 @@ function checkLine(log){
           }
         }
       }
-        }
-      }
+    }
   }
+}
 
-  checkLine(log);
+checkLine(log);
 
 function setName() {
   document.cookie = document.getElementById("name").value;
@@ -126,8 +125,6 @@ function countdown(minutes) {
     } else {
 
       if(mins > 1){
-
-        // countdown(mins-1);   never reach “00″ issue solved:Contributed by Victor Streithorst
         setTimeout(function () { countdown(mins - 1); }, 1000);
 
       }

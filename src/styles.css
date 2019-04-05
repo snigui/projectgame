@@ -105,6 +105,16 @@ h2{
   font-size: 11px;
 }
 
+
+#list{
+  font-family: sans-serif;
+  color: white;
+  position: relative;
+  top: 10%;
+  left: 40%;
+  font-size: 16px;
+}
+
 #timer{
   font-family: 'Montserrat', sans-serif;
   color: white;
