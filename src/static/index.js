@@ -5,54 +5,90 @@ var userColor = getRandomColor();
 //console.log(log[0][0]);
 //console.log(points);
 var socket = io.connect({transports: ['websocket']});
+var columns = 12;
+var rows = 12;
 
-socket.on('connect', function (event) {
-  // connected to server
-});
 setUp();
 
 function getIndex(log){
   var index = [];
   for (var i = 0; i < log.length; i++){
-    for (var j = 1; j < log.length; j++){
+    for (var j = 0; j < log[0].length; j++) {
       if (log[i][j] === 1){
-        index.push(log[i][j])
-      }
-      else if (log[0][0] === 1){
-        index.push(log[0][0])
+          index.push([i,j])
+        }
       }
     }
-  }
   return index
 }
 
-function addClicked(i){
+function deleteStuff(log) {
+  for (var i = 0; i < log.length; i++){
+    for (var j = 0; j < log[0].length; j++) {
+      log[j][i] = 0;
+    }
+  }
+}
+
+function addClicked(coord){
+  var i = (columns * coord[0])+coord[1];
   document.getElementById(i).className = "clicked1";
+
 }
 
 socket.on('click', function (event) {
   // received a message from the server
   console.log(username);
+  console.log(event.username);
   var position = getIndex(event.username);
+  console.log(position);
   for (var i = 0; i < position.length; i++){
     addClicked(position[i]);
+    console.log(position[i] + " position");
+    if (connectFive(position[i])){
+      changeClassName()
+    }
   }
   document.getElementById("PlayerNamesDisplay").value = event;
 });
+
+/*socket.on('win', function (event) {
+  if (checkForwinningOrNot(event[0], event[1])) {
+    winning(event[0], event[1]);
+  }
+
+});*/
+
+/*
+socket.on('delete', function (event) {
+  if (checkForwinningOrNot(event[0], event[1])){
+    changeClassName();
+  }
+});
+*/
+
+
 //basically translate this into python so emit the array of position to server, have the server tell client a dot
 //has been made and display the dot if you get dotMade message
 //would be similar for connect 5, instead of display dot, you'd do delete dots and display score
-//hchien didnt do crap.
+
 var grid = clickableGrid(12, 12, function(el, row, col, i, isDoubleClick) {
   if (!isDoubleClick && !el.className) {
     el.className = "clicked1";
     log[row][col]=1;
     el.style.background = userColor;
     winning(row,col);
+    changeClassName();
+/*    connectFive(log);*/
     socket.emit("click",
-        JSON.stringify({username : log}));
+        JSON.stringify({username : log, position: [row, col]}));
+/*    if (checkForwinningOrNot(row, col)) {
+      socket.emit('win', JSON.stringify([row, col]));
+      changeClassName()
+    }*/
+    console.log(log);
   }
-  console.log(log);
+
 });
 
 function getRandomColor() {
@@ -84,6 +120,31 @@ function setUp(){
   console.log(log);
 }
 
+function connectFive(position){
+  if (log[position[0]] === 1 && log[position[1]] ===1){
+    for (var i = 0; i < 5; i++) {
+      if (position[0] > 5 && position[1] > 5) {
+        if (log[position[0] - i] === 1) {
+          console.log("second filter passed");
+          return true
+        }
+        if (log[position[1] - i] === 1){
+          return true
+        }
+      }
+      else {
+        if (log[position[0] + i] === 1) {
+          console.log("third filter passed");
+          return true
+        }
+        if (log[position[1] + i] === 1){
+          return true
+        }
+      }
+    }
+  }
+  console.log("first filter passed")
+}
 
 function winning(row, col){
   if(!checkForwinningOrNot(row, col)){
@@ -96,7 +157,6 @@ function winning(row, col){
     changeClassName();
     point++;
     alert("Points scored:" + " " + point);
-
   }
 }
 
@@ -129,11 +189,6 @@ function checkForwinningOrNot(row,col){
   }
 }
 
-
-
-//function cleanMatchFive(list){
-//list.pop();
-//}
 
 function get(row,col,row1,col1, /*listOfPostion*/){
 
@@ -174,11 +229,11 @@ function clickableGrid(rows, cols, callback) {
   grid.className = "grid";
   for (var r = 0; r < rows; ++r) {
     var thing1 = document.createElement("tr");
-    thing1.setAttribute("id", r);
+/*    thing1.setAttribute("id", r);*/
     var tr = grid.appendChild(thing1);
     for (var c = 0; c < cols; ++c) {
       var thing2 = document.createElement("td");
-      thing2.setAttribute("id", c);
+      thing2.setAttribute("id", (cols* r)+c);
       var cell = tr.appendChild(thing2);
       cell.addEventListener(
           "click",
@@ -223,6 +278,11 @@ function displayName() {
   var name = document.getElementById("PlayerNamesDisplay");
   name.innerHTML = "Username: " + getName() ;
 }
+
+socket.on('connect', function (event) {
+  console.log("TRUTH: hchien2 didnt do crap, xye4 pushed ONCE with a broken backend," +
+      " isabeloj literally only worked on username display")
+});
 
 function addPoints(current) {
   var name = document.getElementById("PlayerScore");

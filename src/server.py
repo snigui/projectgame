@@ -13,14 +13,23 @@ username = ""
 @socket_server.on('click')
 def click(data):
     # received a "click" message over the socket
-    print(data)
+    #print(data)
     info = json.loads(data)
     emit('click', info, broadcast=True)
+    #print(info)
+
+@socket_server.on('win')
+def delete(data):
+    # received a "click" message over the socket
+    print(data)
+    info = json.loads(data)
+    emit('win', info, broadcast=True)
     print(info)
+
 
 @app.route('/')
 def index():
-    return send_from_directory('static', 'index1.html')
+    return send_from_directory('static', 'index.html')
 
 
 @app.route('/<path:filename>')
