@@ -116,3 +116,12 @@ h2{
   font-color: white;
 }
 
+#doc {
+  top: 3%;
+  right: 90%;
+  left: 95%;
+  font-family: sans-serif;
+  font-size: 12px;
+}
+
+
