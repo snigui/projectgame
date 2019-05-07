@@ -279,10 +279,6 @@ function displayName() {
   name.innerHTML = "Username: " + getName() ;
 }
 
-socket.on('connect', function (event) {
-  console.log("TRUTH: hchien2 didnt do crap, xye4 pushed ONCE with a broken backend," +
-      " isabeloj literally only worked on username display")
-});
 
 function addPoints(current) {
   var name = document.getElementById("PlayerScore");
