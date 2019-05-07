@@ -42,6 +42,7 @@ socket.on('click', function (event) {
 //basically translate this into python so emit the array of position to server, have the server tell client a dot
 //has been made and display the dot if you get dotMade message
 //would be similar for connect 5, instead of display dot, you'd do delete dots and display score
+//hchien didnt do crap.
 var grid = clickableGrid(12, 12, function(el, row, col, i, isDoubleClick) {
   if (!isDoubleClick && !el.className) {
     el.className = "clicked1";
