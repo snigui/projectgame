@@ -72,7 +72,7 @@ socket.on('delete', function (event) {
 //has been made and display the dot if you get dotMade message
 //would be similar for connect 5, instead of display dot, you'd do delete dots and display score
 
-var grid = clickableGrid(12, 12, function(el, row, col, i, isDoubleClick) {
+var grid = tableGrid(12, 12, function(el, row, col, i, isDoubleClick) {
   if (!isDoubleClick && !el.className) {
     el.className = "clicked1";
     log[row][col]=1;
@@ -91,14 +91,6 @@ var grid = clickableGrid(12, 12, function(el, row, col, i, isDoubleClick) {
 
 });
 
-function getRandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
 
 function changeClassName(){
   var name = document.getElementsByClassName("clicked1");
@@ -223,7 +215,7 @@ function notex(row, col) {
 
 
 
-function clickableGrid(rows, cols, callback) {
+function tableGrid(rows, cols, functiony) {
   var i = 0;
   var grid = document.createElement("table");
   grid.className = "grid";
@@ -241,7 +233,7 @@ function clickableGrid(rows, cols, callback) {
             return function() {
               // block to see if double click
               setTimeout(() => {
-                callback(el, r, c, i);
+                functiony(el, r, c, i);
               }, 400);
             };
           })(cell, r, c, i),
@@ -256,7 +248,14 @@ function clickableGrid(rows, cols, callback) {
   return d;
 }
 
-
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
 
 function setName() {
   document.cookie = document.getElementById("username").value;
@@ -289,27 +288,5 @@ function loadGrid() {
   document.body.appendChild(grid);
 }
 
-/*var timeoutHandle;
-function countdown(minutes) {
-  var seconds = 60;
-  var mins = minutes;
-  function tick() {
-    var counter = document.getElementById("timer");
-    var current_minutes = mins-1;
-    seconds--;
-    counter.innerHTML =
-        current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
-    if( seconds > 0 ) {
-      timeoutHandle=setTimeout(tick, 1000);
-    } else {
-
-      if(mins > 1){
-        setTimeout(function () { countdown(mins - 1); }, 1000);
-
-      }
-    }
-  }
-  tick();
-}*/
 
 // console.log(name);

@@ -38,4 +38,4 @@ def static_files(filename):
 
 
 print("listening on port 8082")
-socket_server.run(app, port=8082)
+socket_server.run(app, host="127.0.0.1", port=8082)
