@@ -72,20 +72,19 @@ socket.on('delete', function (event) {
 //has been made and display the dot if you get dotMade message
 //would be similar for connect 5, instead of display dot, you'd do delete dots and display score
 
-var grid = tableGrid(12, 12, function(el, row, col, i, isDoubleClick) {
-  if (!isDoubleClick && !el.className) {
-    el.className = "clicked1";
+var grid = tableGrid(12, 12, function(element, row, col, i, isDoubleClick) {
+  if (!isDoubleClick && !element.className) {
+    element.className = "clicked1";
     log[row][col]=1;
-    el.style.background = userColor;
+    element.style.background = userColor;
     winning(row,col);
     changeClassName();
 /*    connectFive(log);*/
     socket.emit("click",
         JSON.stringify({username : log, position: [row, col]}));
-/*    if (checkForwinningOrNot(row, col)) {
+    if (checkForwinningOrNot(row, col)) {
       socket.emit('win', JSON.stringify([row, col]));
-      changeClassName()
-    }*/
+    }
     console.log(log);
   }
 
