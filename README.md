@@ -4,7 +4,7 @@ snigdham did frontend, half of backend, server and testing.
 
 hchien2 dropped out from making the game. 
 
-isabeloj literally only worked on displaying player name on frontend.
+isabeloj worked on displaying player name on frontend.
 
 xye4 pushed once with a backend that doesn't work. 
 
